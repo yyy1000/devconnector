@@ -48,4 +48,4 @@ const PostSchema = new Schema({
     ]
 });
 
-module.exports = Post = moogoose.model()
+module.exports = Post = moogoose.model('posts', PostSchema);
