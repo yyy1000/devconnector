@@ -1,20 +1,29 @@
 import React, { useState } from 'react';
 import { Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { login } from '../../actions/auth';
 
-export const Login = () => {
+const Login = ({ login, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     email: '',
-    password: ''
+    password: '',
   });
 
-  const { email, password} = formData;
+  const { email, password } = formData;
 
-  const onChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
+  const onChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const onSubmit = async e => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    console.log('Success');
+    login(email, password);
+  };
+
+  // Redirect if logged in
+  if (isAuthenticated) {
+    return <Navigate  to='/dashboard'></Navigate >;
   }
 
   return (
@@ -23,7 +32,11 @@ export const Login = () => {
       <p className='lead'>
         <i className='fas fa-user'></i> Sign Into Your Account
       </p>
-      <form action='dashboard.html' className='form' onSubmit={e => onSubmit(e)}>
+      <form
+        action='dashboard.html'
+        className='form'
+        onSubmit={(e) => onSubmit(e)}
+      >
         <div className='form-group'>
           <input
             type='email'
@@ -51,8 +64,19 @@ export const Login = () => {
         <input type='submit' value='Login' className='btn btn-primary' />
       </form>
       <p className='my-1'>
-        Don't have an account? <Link to ='/Register'>Sign Up</Link>
+        Don't have an account? <Link to='/Register'>Sign Up</Link>
       </p>
     </Fragment>
   );
 };
+
+Login.propTypes = {
+  login: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool,
+};
+
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { login })(Login);
