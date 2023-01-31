@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addExperience } from '../../actions/profile';
 
-const AddExperience = ({addExperience, history}) => {
+const AddExperience = ({ addExperience, history }) => {
   const [formData, setFormData] = useState({
     title: '',
     company: '',
@@ -90,7 +90,7 @@ const AddExperience = ({addExperience, history}) => {
               name='current'
               value={current}
               onChange={(e) => {
-                onChange(e)
+                onChange(e);
                 setFormData({ ...formData, current: !current });
                 toggleDisabled(!toDateDisabled);
               }}

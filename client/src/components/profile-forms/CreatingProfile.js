@@ -20,7 +20,7 @@ const CreatingProfile = ({ createProfile, history }) => {
   });
 
   const [displaySocialInputs, toggleSocialInputs] = useState(false);
-  
+
   //const navigate = useNavigate();
 
   const {

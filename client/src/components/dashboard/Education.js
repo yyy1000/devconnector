@@ -4,7 +4,7 @@ import Moment from 'react-moment';
 import { connect } from 'react-redux';
 import { deleteEducation } from '../../actions/profile';
 
-const Education = ({ education, deleteEducation}) => {
+const Education = ({ education, deleteEducation }) => {
   const educations = education.map((edu) => (
     <tr key={edu._id}>
       <td>{edu.school}</td>
@@ -18,7 +18,12 @@ const Education = ({ education, deleteEducation}) => {
         )}
       </td>
       <td>
-        <button onClick={() => deleteEducation(edu._id)} className='btn btn-danger'>Delete</button>
+        <button
+          onClick={() => deleteEducation(edu._id)}
+          className='btn btn-danger'
+        >
+          Delete
+        </button>
       </td>
     </tr>
   ));
@@ -40,8 +45,8 @@ const Education = ({ education, deleteEducation}) => {
 };
 
 Education.propTypes = {
-    Education: PropTypes.array.isRequired,
-    deleteEducation: PropTypes.func.isRequired
+  Education: PropTypes.array.isRequired,
+  deleteEducation: PropTypes.func.isRequired,
 };
 
 export default connect(null, deleteEducation)(Education);

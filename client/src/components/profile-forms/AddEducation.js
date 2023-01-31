@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addEducation } from '../../actions/profile';
 
-const AddEducation = ({addEducation, history}) => {
+const AddEducation = ({ addEducation, history }) => {
   const [formData, setFormData] = useState({
     degree: '',
     school: '',
@@ -16,7 +16,8 @@ const AddEducation = ({addEducation, history}) => {
 
   const [toDateDisabled, toggleDisabled] = useState(false);
 
-  const { degree, school, fieldofstudy, from, to, current, description } = formData;
+  const { degree, school, fieldofstudy, from, to, current, description } =
+    formData;
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -24,7 +25,8 @@ const AddEducation = ({addEducation, history}) => {
     <Fragment>
       <h1 class='large text-primary'>Add An Education</h1>
       <p class='lead'>
-        <i class='fas fa-code-branch'></i> Add any school or bootcamp that you have had in the past
+        <i class='fas fa-code-branch'></i> Add any school or bootcamp that you
+        have had in the past
       </p>
       <small>* = required field</small>
       <form
@@ -89,7 +91,7 @@ const AddEducation = ({addEducation, history}) => {
               name='current'
               value={current}
               onChange={(e) => {
-                onChange(e)
+                onChange(e);
                 setFormData({ ...formData, current: !current });
                 toggleDisabled(!toDateDisabled);
               }}

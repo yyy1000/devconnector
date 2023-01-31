@@ -1,7 +1,13 @@
 import axios from 'axios';
 import { setAlert } from './alert';
 
-import { CLEAR_PROFILE, ACCOUNT_DELETED, GET_PROFILE, PROFILE_ERROR, UPDATE_PROFILE } from './types';
+import {
+  CLEAR_PROFILE,
+  ACCOUNT_DELETED,
+  GET_PROFILE,
+  PROFILE_ERROR,
+  UPDATE_PROFILE,
+} from './types';
 
 //Get current users profile
 export const getCurrentProfile = () => async (dispatch) => {
@@ -124,7 +130,7 @@ export const addEducation = (formData, history) => async (dispatch) => {
 // Delete experience
 export const deleteExperience = (id) => async (dispatch) => {
   try {
-    console.log("HERE")
+    console.log('HERE');
     const res = await axios.delete(`/api/profile/experience/${id}`);
 
     dispatch({
@@ -161,23 +167,23 @@ export const deleteEducation = (id) => async (dispatch) => {
 };
 
 // Delete account & profile
-export const deleteAccount= (id) => async (dispatch) => {
-  if(window.confirm('Are u sure? Can not be undone!'))
-  try {
-    const res = await axios.delete('/api/profile');
+export const deleteAccount = (id) => async (dispatch) => {
+  if (window.confirm('Are u sure? Can not be undone!'))
+    try {
+      const res = await axios.delete('/api/profile');
 
-    dispatch({
-      type: CLEAR_PROFILE
-    });
-    dispatch({
-      type: ACCOUNT_DELETED
-    });
+      dispatch({
+        type: CLEAR_PROFILE,
+      });
+      dispatch({
+        type: ACCOUNT_DELETED,
+      });
 
-    dispatch(setAlert('Your account has been deleted permanantly'));
-  } catch (err) {
-    dispatch({
-      type: PROFILE_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status },
-    });
-  }
+      dispatch(setAlert('Your account has been deleted permanantly'));
+    } catch (err) {
+      dispatch({
+        type: PROFILE_ERROR,
+        payload: { msg: err.response.statusText, status: err.response.status },
+      });
+    }
 };
