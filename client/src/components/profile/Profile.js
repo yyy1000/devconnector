@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getProfileById } from '../../actions/profile';
+import ProfileTop from './ProfileTop';
+import ProfileAbout from './ProfileAbout';
 
 const Profile = ({ getProfileById, profile: { profile, loading }, auth }) => {
   const { id } = useParams();
@@ -27,6 +29,10 @@ const Profile = ({ getProfileById, profile: { profile, loading }, auth }) => {
                 Edit
               </Link>
             )}
+            <div class="profile-grid my-1">
+                <ProfileTop profile={profile}></ProfileTop>
+                <ProfileAbout profile={profile}></ProfileAbout>
+            </div>
         </Fragment>
       )}
     </Fragment>
