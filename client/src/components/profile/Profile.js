@@ -62,7 +62,7 @@ const Profile = ({ getProfileById, profile: { profile, loading }, auth }) => {
                   ))}
                 </Fragment>
               ) : (
-                <h4>No Experience credentials</h4>
+                <h4>No Education credentials</h4>
               )}
             </div>
             {profile.githubusername && (
