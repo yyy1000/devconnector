@@ -10,7 +10,7 @@ import PostForm from './PostForm';
 const Posts = ({ getPosts, post: { posts, loading } }) => {
   useEffect(() => {
     getPosts();
-  });
+  }, [getPosts]);
   return loading ? (
     <Spinner></Spinner>
   ) : (
