@@ -3,11 +3,10 @@ const request = require('request');
 const config = require('config');
 const router = express.Router();
 const auth = require('../../middleware/auth');
-const { check, validationResult, body } = require('express-validator');
+const { check, validationResult } = require('express-validator');
 
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
-const { response } = require('express');
 const Post = require('../../models/Post');
 
 // @route GET api/profile/me
@@ -56,9 +55,6 @@ router.post(
       githubusername,
       skills,
       youtube,
-      facebook,
-      twitter,
-      instagram,
       linkedin,
     } = req.body;
 

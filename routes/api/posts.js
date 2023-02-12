@@ -4,7 +4,6 @@ const { check, validationResult } = require('express-validator');
 const auth = require('../../middleware/auth');
 
 const Post = require('../../models/Post');
-const Profile = require('../../models/Profile');
 const User = require('../../models/User');
 
 // @route POST api/posts
@@ -20,6 +19,7 @@ router.post(
     }
 
     try {
+      // not return password field for security
       const user = await User.findById(req.user.id).select('-password');
 
       const newPost = new Post({

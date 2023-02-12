@@ -21,13 +21,6 @@ router.get('/', auth, async (req, res) => {
   }
 });
 
-module.exports = router;
-
-// @route Post api/auth
-// @desc Test route
-// @access Public
-router.get('/', (req, res) => res.send('User route'));
-
 router.post(
   '/',
   [
