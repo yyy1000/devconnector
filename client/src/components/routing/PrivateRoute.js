@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 const PrivateRoute = ({
     component: Component,
-    auth: { isAuthenticated, loading }
+    auth: { isAuthenticated }
   }) => {
     //if (loading) return <Spinner />;
     if (isAuthenticated) return <Component />;

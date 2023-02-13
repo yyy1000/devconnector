@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Fragment } from 'react';
 import { createProfile, getCurrentProfile } from '../../actions/profile';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const EditProfile = ({
   profile: { profile, loading },
