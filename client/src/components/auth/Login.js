@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Fragment } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
